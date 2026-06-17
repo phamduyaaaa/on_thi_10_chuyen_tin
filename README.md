@@ -1,29 +1,38 @@
 # Bài 1. Đoạn thẳng (line)
 
 ## Ý tưởng
+
 Phần giao của hai đoạn:
 
-- Đầu trái: `max(a, c)`
-- Đầu phải: `min(b, d)`
+- Trái: `max(a,c)`
+- Phải: `min(b,d)`
 
-Nếu `left > right` thì hai đoạn không giao nhau → in `-1`.
+Nếu trái > phải thì không giao nhau ⇒ in `-1`.
 
 Ngược lại độ dài phần chung là:
 
-`right - left`
+`phải - trái`
 
-## Code Python
+## Code C++
 
-```python
-a, b, c, d = map(int, input().split())
+```cpp
+#include <iostream>
+using namespace std;
 
-left = max(a, c)
-right = min(b, d)
+int main() {
+    long long a, b, c, d;
+    cin >> a >> b >> c >> d;
 
-if left > right:
-    print(-1)
-else:
-    print(right - left)
+    long long left = max(a, c);
+    long long right = min(b, d);
+
+    if (left > right)
+        cout << -1;
+    else
+        cout << right - left;
+
+    return 0;
+}
 ```
 
 ---
@@ -32,34 +41,44 @@ else:
 
 ## Ý tưởng
 
-Cần tìm số nhỏ nhất `k` sao cho:
+Tìm k nhỏ nhất sao cho:
 
 `1 + 2 + ... + k >= n`
 
 Ta có:
 
-`1 + 2 + ... + k = k*(k+1)/2`
+`1 + 2 + ... + k = k(k+1)/2`
 
-Dùng tìm kiếm nhị phân trên giá trị `k`.
+Dùng tìm kiếm nhị phân.
 
-## Code Python
+## Code C++
 
-```python
-n = int(input())
+```cpp
+#include <iostream>
+using namespace std;
 
-l, r = 1, n
-ans = n
+int main() {
+    long long n;
+    cin >> n;
 
-while l <= r:
-    mid = (l + r) // 2
+    long long l = 1, r = 2000000000LL;
+    long long ans = r;
 
-    if mid * (mid + 1) // 2 >= n:
-        ans = mid
-        r = mid - 1
-    else:
-        l = mid + 1
+    while (l <= r) {
+        long long mid = (l + r) / 2;
 
-print(ans)
+        if ((__int128)mid * (mid + 1) / 2 >= n) {
+            ans = mid;
+            r = mid - 1;
+        }
+        else {
+            l = mid + 1;
+        }
+    }
+
+    cout << ans;
+    return 0;
+}
 ```
 
 ---
@@ -68,38 +87,43 @@ print(ans)
 
 ## Ý tưởng
 
-Cần chọn hình chữ nhật `a × b` sao cho:
+Cần:
 
 `a*b >= N`
 
-và chu vi:
+Chu vi:
 
 `P = 2(a+b)`
 
-là nhỏ nhất.
+Thử mọi a từ 1 đến √N.
 
-Thử mọi `a` từ `1` đến `sqrt(N)`.
-
-Với mỗi `a`:
+Với mỗi a:
 
 `b = ceil(N/a)`
 
-Tính chu vi và lấy nhỏ nhất.
+Lấy chu vi nhỏ nhất.
 
-## Code Python
+## Code C++
 
-```python
-import math
+```cpp
+#include <iostream>
+#include <cmath>
+using namespace std;
 
-N = int(input())
+int main() {
+    long long N;
+    cin >> N;
 
-ans = 10**18
+    long long ans = 1e18;
 
-for a in range(1, math.isqrt(N) + 1):
-    b = (N + a - 1) // a
-    ans = min(ans, 2 * (a + b))
+    for (long long a = 1; a * a <= N; a++) {
+        long long b = (N + a - 1) / a;
+        ans = min(ans, 2 * (a + b));
+    }
 
-print(ans)
+    cout << ans;
+    return 0;
+}
 ```
 
 ---
@@ -108,25 +132,32 @@ print(ans)
 
 ## Ý tưởng
 
-Sinh dãy Fibonacci:
+Sinh dãy Fibonacci cho tới khi vượt quá n.
 
-`1, 1, 2, 3, 5, 8, ...`
+Số trước đó chính là đáp án.
 
-Cho đến khi số tiếp theo vượt quá `n`.
+## Code C++
 
-Số Fibonacci lớn nhất không vượt quá `n` chính là số đứng trước.
+```cpp
+#include <iostream>
+using namespace std;
 
-## Code Python
+int main() {
+    long long n;
+    cin >> n;
 
-```python
-n = int(input())
+    long long a = 1;
+    long long b = 1;
 
-a, b = 1, 1
+    while (b <= n) {
+        long long c = a + b;
+        a = b;
+        b = c;
+    }
 
-while b <= n:
-    a, b = b, a + b
-
-print(a)
+    cout << a;
+    return 0;
+}
 ```
 
 ---
@@ -134,13 +165,6 @@ print(a)
 # Bài 5. Đếm hình vuông (square)
 
 ## Ý tưởng
-
-Số hình vuông kích thước:
-
-- `1×1`: có `n²`
-- `2×2`: có `(n-1)²`
-- ...
-- `n×n`: có `1`
 
 Tổng số hình vuông:
 
@@ -150,12 +174,20 @@ Công thức:
 
 `n(n+1)(2n+1)/6`
 
-## Code Python
+## Code C++
 
-```python
-n = int(input())
+```cpp
+#include <iostream>
+using namespace std;
 
-print(n * (n + 1) * (2 * n + 1) // 6)
+int main() {
+    long long n;
+    cin >> n;
+
+    cout << n * (n + 1) * (2 * n + 1) / 6;
+
+    return 0;
+}
 ```
 
 ---
@@ -164,31 +196,32 @@ print(n * (n + 1) * (2 * n + 1) // 6)
 
 ## Ý tưởng
 
-- Gặp `1` → có người vào → tăng số người trong bảo tàng.
-- Gặp `0` → có người ra → giảm số người trong bảo tàng.
+- 1 → có người vào → tăng số người hiện tại.
+- 0 → có người ra → giảm số người hiện tại.
 
-Số thẻ tối thiểu cần in chính là số người có mặt nhiều nhất cùng lúc.
+Đáp án là số người nhiều nhất có mặt cùng lúc.
 
-Ta dùng:
+## Code C++
 
-- `cur`: số người hiện tại.
-- `ans`: giá trị lớn nhất của `cur`.
+```cpp
+#include <iostream>
+using namespace std;
 
-## Code Python
+int main() {
+    int x;
+    int cur = 0;
+    int ans = 0;
 
-```python
-import sys
+    while (cin >> x) {
+        if (x == 1)
+            cur++;
+        else
+            cur--;
 
-cur = 0
-ans = 0
+        ans = max(ans, cur);
+    }
 
-for x in sys.stdin.read().split():
-    if x == '1':
-        cur += 1
-    else:
-        cur -= 1
-
-    ans = max(ans, cur)
-
-print(ans)
+    cout << ans;
+    return 0;
+}
 ```
