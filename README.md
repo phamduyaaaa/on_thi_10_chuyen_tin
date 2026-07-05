@@ -1,4 +1,4 @@
-# Bộ bài tập C++ - Nhập môn (Phong cách Codeforces)
+# Kiểm tra tháng 6
 
 ---
 
