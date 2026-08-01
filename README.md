@@ -2,273 +2,37 @@
 
 ---
 
-# Bài 1. Mật mã của nhà thám hiểm
+# Bài 1. Phân chia kho báu
 
 ## Đề bài
 
-Một nhà thám hiểm tìm thấy một dãy số nguyên dương. Hai số được gọi là **cặp hợp lệ** nếu tổng của chúng đúng bằng `S`.
+Một vị vua có hai kho báu chứa lần lượt `a` và `b` viên đá.
 
-Cho `n` số nguyên và số nguyên `S`. Hãy đếm số cặp phần tử `(i, j)` thỏa mãn:
+Ông muốn chia số đá thành các nhóm có **số lượng bằng nhau và lớn nhất có thể**, sao cho:
 
-* `i < j`;
-* `a[i] + a[j] = S`.
+* Mỗi nhóm lấy cùng số viên đá từ cả hai kho.
+* Không còn viên đá nào bị dư.
 
-Mỗi cặp vị trí khác nhau được tính là một cặp riêng biệt.
+Cho hai số nguyên dương `a` và `b`. Hãy tìm số viên đá lớn nhất có thể có trong mỗi nhóm.
 
 ## Input
 
-* Dòng đầu gồm hai số nguyên `n`, `S`.
-* Dòng thứ hai gồm `n` số nguyên `a[i]`.
+Một dòng duy nhất chứa hai số nguyên dương `a`, `b`.
 
 ## Output
 
-In ra số lượng cặp hợp lệ.
+In ra số viên đá lớn nhất trong mỗi nhóm.
 
 ## Ràng buộc
 
-* `1 ≤ n ≤ 2 × 10^5`
-* `-10^9 ≤ a[i], S ≤ 10^9`
+* `1 ≤ a, b ≤ 10^18`
 
 ## Ví dụ
 
 ### Input
 
 ```text
-6 10
-2 8 5 5 3 7
-```
-
-### Output
-
-```text
-3
-```
-
-### Giải thích
-
-Các cặp hợp lệ là:
-
-* `2 + 8 = 10`
-* `5 + 5 = 10`
-* `3 + 7 = 10`
-
-Vậy có `3` cặp.
-
----
-
-# Bài 2. Đường hầm bí mật
-
-## Đề bài
-
-Một đường hầm có `n` đoạn. Mỗi đoạn có một mức năng lượng `a[i]`.
-
-Một nhóm thám hiểm muốn chọn **một đoạn liên tiếp** của đường hầm sao cho tổng năng lượng của các đoạn đó đúng bằng `S`.
-
-Hãy tìm độ dài **nhỏ nhất** của đoạn liên tiếp có tổng bằng `S`.
-
-Nếu không tồn tại đoạn nào, in ra `-1`.
-
-## Input
-
-* Dòng đầu gồm hai số nguyên `n`, `S`.
-* Dòng thứ hai gồm `n` số nguyên dương `a[i]`.
-
-## Output
-
-In ra độ dài nhỏ nhất của đoạn liên tiếp có tổng bằng `S`, hoặc `-1` nếu không tồn tại.
-
-## Ràng buộc
-
-* `1 ≤ n ≤ 2 × 10^5`
-* `1 ≤ a[i] ≤ 10^9`
-* `1 ≤ S ≤ 10^18`
-
-## Ví dụ
-
-### Input
-
-```text
-6 7
-2 3 1 2 4 3
-```
-
-### Output
-
-```text
-2
-```
-
-### Giải thích
-
-Có đoạn:
-
-```text
-3 1 2  = 6
-```
-
-không hợp lệ.
-
-Các đoạn có tổng `7` gồm:
-
-```text
-2 3 1 2  = 8
-3 1 2  = 6
-4 3 = 7
-```
-
-Đoạn `4 3` có độ dài `2`, và đây là độ dài nhỏ nhất.
-
----
-
-# Bài 3. Kho hàng bị trùng mã
-
-## Đề bài
-
-Một kho hàng có `n` kiện hàng. Mỗi kiện có một mã số nguyên.
-
-Người quản lý muốn biết **mã hàng xuất hiện nhiều nhất**.
-
-Nếu có nhiều mã cùng có số lần xuất hiện lớn nhất, hãy in ra **mã có giá trị nhỏ nhất**.
-
-## Input
-
-* Dòng đầu chứa số nguyên `n`.
-* Dòng thứ hai chứa `n` số nguyên `a[i]`.
-
-## Output
-
-In ra mã hàng xuất hiện nhiều nhất.
-
-## Ràng buộc
-
-* `1 ≤ n ≤ 2 × 10^5`
-* `-10^9 ≤ a[i] ≤ 10^9`
-
-## Ví dụ
-
-### Input
-
-```text
-8
-5 2 5 3 2 5 3 2
-```
-
-### Output
-
-```text
-2
-```
-
-### Giải thích
-
-Số lần xuất hiện:
-
-* `2` xuất hiện `3` lần.
-* `5` xuất hiện `3` lần.
-* `3` xuất hiện `2` lần.
-
-`2` và `5` cùng xuất hiện nhiều nhất, nên chọn giá trị nhỏ hơn là `2`.
-
----
-
-# Bài 4. Cánh cửa ngoặc bí ẩn
-
-## Đề bài
-
-Một cánh cửa chỉ mở khi chuỗi ngoặc được nhập vào là **hợp lệ**.
-
-Chuỗi chỉ chứa hai ký tự:
-
-```text
-(
-)
-```
-
-Một chuỗi ngoặc hợp lệ phải thỏa mãn:
-
-* Mỗi dấu `(` phải có một dấu `)` tương ứng.
-* Không được xuất hiện dấu `)` khi trước đó chưa có dấu `(` tương ứng.
-* Sau khi xét hết chuỗi, không được còn dấu `(` chưa đóng.
-
-Hãy kiểm tra chuỗi đã cho có hợp lệ hay không.
-
-## Input
-
-Một dòng chứa chuỗi `s`.
-
-## Output
-
-* In `YES` nếu chuỗi hợp lệ.
-* In `NO` nếu chuỗi không hợp lệ.
-
-## Ràng buộc
-
-* `1 ≤ |s| ≤ 2 × 10^5`
-* `s` chỉ chứa `(` và `)`.
-
-## Ví dụ 1
-
-### Input
-
-```text
-(()())
-```
-
-### Output
-
-```text
-YES
-```
-
-## Ví dụ 2
-
-### Input
-
-```text
-())(
-```
-
-### Output
-
-```text
-NO
-```
-
----
-
-# Bài 5. Đoạn đường có tổng lớn nhất
-
-## Đề bài
-
-Một robot di chuyển qua `n` khu vực liên tiếp. Mỗi khu vực có một giá trị năng lượng `a[i]`.
-
-Giá trị có thể dương hoặc âm.
-
-Robot muốn chọn **một đoạn liên tiếp không rỗng** sao cho tổng năng lượng của đoạn đó là lớn nhất.
-
-Hãy tìm tổng lớn nhất có thể đạt được.
-
-## Input
-
-* Dòng đầu chứa số nguyên `n`.
-* Dòng thứ hai chứa `n` số nguyên `a[i]`.
-
-## Output
-
-In ra tổng lớn nhất của một đoạn liên tiếp không rỗng.
-
-## Ràng buộc
-
-* `1 ≤ n ≤ 2 × 10^5`
-* `-10^9 ≤ a[i] ≤ 10^9`
-
-## Ví dụ
-
-### Input
-
-```text
-8
--2 1 -3 4 -1 2 1 -5
+48 18
 ```
 
 ### Output
@@ -277,18 +41,211 @@ In ra tổng lớn nhất của một đoạn liên tiếp không rỗng.
 6
 ```
 
-### Giải thích
+---
 
-Đoạn có tổng lớn nhất là:
+# Bài 2. Chu kỳ hoạt động của máy
+
+## Đề bài
+
+Trong một nhà máy có hai máy tự động:
+
+* Máy thứ nhất thực hiện một chu kỳ sau mỗi `a` giây.
+* Máy thứ hai thực hiện một chu kỳ sau mỗi `b` giây.
+
+Ban đầu cả hai máy cùng thực hiện chu kỳ tại thời điểm `0`.
+
+Hãy tìm thời điểm dương nhỏ nhất mà hai máy lại cùng thực hiện chu kỳ.
+
+## Input
+
+Một dòng gồm hai số nguyên dương `a`, `b`.
+
+## Output
+
+In ra thời điểm nhỏ nhất mà hai máy cùng thực hiện chu kỳ.
+
+## Ràng buộc
+
+* `1 ≤ a, b ≤ 10^9`
+
+## Ví dụ
+
+### Input
 
 ```text
-4 -1 2 1
+12 18
 ```
+
+### Output
+
+```text
+36
+```
+
+---
+
+# Bài 3. Tìm mã sản phẩm
+
+## Đề bài
+
+Một hệ thống quản lý kho lưu `n` mã sản phẩm theo thứ tự **không giảm**.
+
+Người quản lý cần kiểm tra mã sản phẩm `x` có tồn tại hay không.
+
+Nếu `x` xuất hiện nhiều lần, hãy in ra **vị trí đầu tiên** của nó, đánh số từ `1`.
+
+Nếu không tồn tại, in ra `-1`.
+
+## Input
+
+* Dòng đầu gồm hai số nguyên `n`, `x`.
+* Dòng thứ hai gồm `n` số nguyên đã được sắp xếp theo thứ tự không giảm.
+
+## Output
+
+In ra vị trí đầu tiên của `x`, hoặc `-1` nếu không tồn tại.
+
+## Ràng buộc
+
+* `1 ≤ n ≤ 2 × 10^5`
+* `-10^9 ≤ a[i], x ≤ 10^9`
+
+## Ví dụ
+
+### Input
+
+```text
+8 12
+2 5 7 12 12 12 18 20
+```
+
+### Output
+
+```text
+4
+```
+
+---
+
+# Bài 4. Đếm số ngày đạt chuẩn
+
+## Đề bài
+
+Một nhà máy theo dõi số sản phẩm được sản xuất trong `n` ngày.
+
+Một ngày được xem là **đạt chuẩn** nếu số sản phẩm sản xuất trong ngày đó lớn hơn hoặc bằng `k`.
+
+Hãy đếm số ngày đạt chuẩn và tính tổng số sản phẩm được sản xuất trong những ngày đạt chuẩn đó.
+
+## Input
+
+* Dòng đầu gồm hai số nguyên `n`, `k`.
+* Dòng thứ hai chứa `n` số nguyên `a[i]`, trong đó `a[i]` là số sản phẩm được sản xuất trong ngày thứ `i`.
+
+## Output
+
+In ra hai số nguyên trên cùng một dòng:
+
+```text
+số_ngày_đạt_chuẩn tổng_sản_phẩm
+```
+
+Nếu không có ngày nào đạt chuẩn, tổng sản phẩm cần in ra là `0`.
+
+## Ràng buộc
+
+* `1 ≤ n ≤ 10^5`
+* `0 ≤ a[i] ≤ 10^9`
+* `0 ≤ k ≤ 10^9`
+
+## Ví dụ
+
+### Input
+
+```text
+6 50
+30 70 45 80 50 20
+```
+
+### Output
+
+```text
+3 200
+```
+
+### Giải thích
+
+Các ngày đạt chuẩn là:
+
+```text
+70, 80, 50
+```
+
+Có `3` ngày.
 
 Tổng:
 
 ```text
-4 + (-1) + 2 + 1 = 6
+70 + 80 + 50 = 200
 ```
 
-Vì vậy đáp án là `6`.
+---
+
+# Bài 5. Phân tích kết quả thi
+
+## Đề bài
+
+Một lớp có `n` học sinh. Điểm của mỗi học sinh là một số nguyên từ `0` đến `100`.
+
+Hãy đọc toàn bộ điểm và in ra:
+
+* Điểm cao nhất.
+* Điểm thấp nhất.
+* Số học sinh có điểm **từ 50 trở lên**.
+* Điểm trung bình cộng của cả lớp, hiển thị đúng **2 chữ số sau dấu phẩy**.
+
+## Input
+
+* Dòng đầu chứa số nguyên `n`.
+* Dòng tiếp theo chứa `n` số nguyên là điểm của các học sinh.
+
+## Output
+
+In đúng theo định dạng:
+
+```text
+Max: ...
+Min: ...
+Passed: ...
+Average: ...
+```
+
+Trong đó:
+
+* `Max` là điểm cao nhất.
+* `Min` là điểm thấp nhất.
+* `Passed` là số học sinh có điểm từ `50` trở lên.
+* `Average` được in với đúng `2` chữ số sau dấu phẩy.
+
+## Ràng buộc
+
+* `1 ≤ n ≤ 10^5`
+* `0 ≤ a[i] ≤ 100`
+
+## Ví dụ
+
+### Input
+
+```text
+6
+45 80 60 35 90 50
+```
+
+### Output
+
+```text
+Max: 90
+Min: 35
+Passed: 4
+Average: 60.00
+```
