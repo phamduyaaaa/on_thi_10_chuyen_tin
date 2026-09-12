@@ -1,4 +1,4 @@
-# Kiểm tra giữa tháng 9
+# Kiểm tra tháng 8 (L2)
 
 ---
 
