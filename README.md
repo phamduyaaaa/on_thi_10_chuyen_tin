@@ -180,7 +180,7 @@ In ra số lượng cặp chỉ số thỏa mãn điều kiện.
 
 ### Output
 
-    4
+    3
 
 ### Giải thích
 
